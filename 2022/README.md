@@ -20,5 +20,5 @@ By default the solution programs run on input files in the `data/input` folder.
 
 To run the solution on test data in the `data/test` run:
 ```
-$ scala-cli src -M <dayX>.<partX> -- input
+$ scala-cli src -M <dayX>.<partX> -- test
 ```

@@ -1,14 +1,15 @@
 package day3
 
+import utils.helpers.readData
 import scala.io.Source
 
 @main def part1(source: String): Unit = {
-  val data = Source.fromFile(s"data/$source/day3").mkString
+  val data = readData(source, 3)
   println(sol1(data))
 }
 
 @main def part2(source: String): Unit = {
-  val data = Source.fromFile(s"data/$source/day3").mkString
+  val data = readData(source, 3)
   println(sol2(data))
 }
 

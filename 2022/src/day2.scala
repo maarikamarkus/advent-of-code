@@ -1,5 +1,6 @@
 package day2
 
+import utils.helpers.readData
 import scala.io.Source
 
 val testRound: Round = Round('A', 'Y')
@@ -7,12 +8,12 @@ val testRounds = List(testRound, testRound.copy(opponent = 'B', strategy = 'X'),
 
 
 @main def part1(source: String): Unit = {
-  val data = Source.fromFile(s"data/$source/day2").mkString
+  val data = readData(source, 2)
   println(sol1(data))
 }
 
 @main def part2(source: String): Unit = {
-  val data = Source.fromFile(s"data/$source/day2").mkString
+  val data = readData(source, 2)
   println(sol2(data))
 }
 

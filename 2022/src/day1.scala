@@ -1,15 +1,16 @@
 package day1
 
+import utils.helpers.readData
 import scala.io.Source
 import scala.collection.mutable.ListBuffer
 
 @main def part1(source: String): Unit =
-  val input = Source.fromFile(s"data/$source/day1").mkString
+  val input = readData(source, 1)
   val answer = sol1(input)
   println(s"The solution is $answer")
 
 @main def part2(source: String): Unit =
-  val input = Source.fromFile(s"data/$source/day1").mkString
+  val input = readData(source, 1)
   val answer = sol2(input)
   println(s"The solution is $answer")
 

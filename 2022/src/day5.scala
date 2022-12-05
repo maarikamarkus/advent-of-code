@@ -19,12 +19,20 @@ def sol1(data: String): String = {
   topOfStacks(data)
 }
 
-def sol2(data: String): Int = {
-  0
+def sol2(data: String): String = {
+  topOfStacks2(data)
 }
 
 private def topOfStacks(data: String): String = {
   val stackMap: Map[Int, Stack[Char]] = parseData(data)
+  val stacks = stackMap.values
+  var res = ""
+  stacks.foreach(stack => res += (stack.pop))
+  res
+}
+
+private def topOfStacks2(data: String): String = {
+  val stackMap: Map[Int, Stack[Char]] = parseData2(data)
   val stacks = stackMap.values
   var res = ""
   stacks.foreach(stack => res += (stack.pop))
@@ -38,6 +46,15 @@ private def parseData(data: String): Map[Int, Stack[Char]] = {
   val procedure = rearrengementProcedure(procedureKey)
   runProcedure(startingStacks, procedure)
 }
+
+private def parseData2(data: String): Map[Int, Stack[Char]] = {
+  val (startingMap: String, procedureKey: String) = Tuple.fromArray(data.split("\n\n"))
+
+  val startingStacks = stacksOfCrates(startingMap)
+  val procedure = rearrengementProcedure(procedureKey)
+  runProcedure2(startingStacks, procedure)
+}
+
 
 private def stacksOfCrates(startingMap: String): Map[Int, Stack[Char]] = {
   var stackMap: Map[Int, Stack[Char]] = Map.empty
@@ -71,6 +88,18 @@ private def runProcedure(stacks: Map[Int, Stack[Char]], procedure: List[(Int, In
     for (i <- 1 to n) {
       stacks(t).push(stacks(f).pop)
     }
+  }
+  stacks
+}
+
+private def runProcedure2(stacks: Map[Int, Stack[Char]], procedure: List[(Int, Int, Int)]): Map[Int, Stack[Char]]
+= {
+  for ((n, f, t) <- procedure) {
+    var cratesToBeMoved: Array[Char] = Array.empty
+    for (i <- 1 to n) {
+      cratesToBeMoved +:= stacks(f).pop
+    }
+    cratesToBeMoved.foreach(crate => stacks(t).push(crate))
   }
   stacks
 }

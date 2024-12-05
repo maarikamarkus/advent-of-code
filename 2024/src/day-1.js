@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils/utils");
-const day = 1;
 function part1() {
-    const input = (0, utils_1.readInput)(day, false).trim();
+    const input = (0, utils_1.readInput)(day, test).trim();
     const { first, second } = getCols(input);
     const distances = [];
     for (let i = 0; i < first.length; i++) {
@@ -13,7 +12,7 @@ function part1() {
     console.log(distances.reduce((acc, curr) => acc + curr, 0));
 }
 function part2() {
-    const input = (0, utils_1.readInput)(day, true).trim();
+    const input = (0, utils_1.readInput)(day, test).trim();
     const { first, second } = getCols(input);
     const rightCounts = new Map();
     second.forEach(num => { var _a; return rightCounts.set(num, ((_a = rightCounts.get(num)) !== null && _a !== void 0 ? _a : 0) + 1); });
@@ -32,5 +31,7 @@ function getCols(input) {
     const compareNums = (a, b) => a - b;
     return { first: first.sort(compareNums), second: second.sort(compareNums) };
 }
-//part1();
+const day = 1;
+const test = true;
+part1();
 part2();

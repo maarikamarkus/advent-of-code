@@ -9,7 +9,9 @@ function part1() {
 function part2() {
     const input = (0, utils_1.readInput)(day, test);
     const reports = getReports(input);
-    console.log(reports.reduce((acc, curr) => acc + (isReportSafe(curr) || curr.some((_, i) => isReportSafe([...curr.slice(0, i), ...curr.slice(i + 1)]))
+    console.log(reports.reduce((acc, curr) => 
+    // Report is already safe, or exists a safe subreport
+    acc + (isReportSafe(curr) || curr.some((_, i) => isReportSafe([...curr.slice(0, i), ...curr.slice(i + 1)]))
         ? 1 : 0), 0));
 }
 function getReports(input) {
@@ -36,6 +38,6 @@ function isReportSafe(report) {
     return true;
 }
 const day = 2;
-const test = false;
-//part1()
+const test = true;
+part1();
 part2();
